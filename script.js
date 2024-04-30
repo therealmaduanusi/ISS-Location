@@ -3,7 +3,7 @@
 // .then(x => x.json())
 // .then(y => console.log(y.latitude))
 // console.log('happy birthday');
-const interval = 1000;
+const interval = 3000;
 setInterval(() => {
     // USING ASYNC MODE
     getFiles('https://api.wheretheiss.at/v1/satellites/25544')
@@ -18,11 +18,11 @@ setInterval(() => {
             document.getElementById('demo1').innerHTML = getLat;
         }else{
             console.error('Error');
-            document.getElementById('demo').innerHTML = '404 wrong url';
-            document.getElementById('demo1').innerHTML = '404 wrong url';
+            document.getElementById('demo').innerHTML = '404 too many request from server';
+            document.getElementById('demo1').innerHTML = '404 too many request from server';
         }
     }
-    // console.log("hello");
+    console.log("hello");
 }, interval);
 
 
