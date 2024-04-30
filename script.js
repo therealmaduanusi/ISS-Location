@@ -3,24 +3,29 @@
 // .then(x => x.json())
 // .then(y => console.log(y.latitude))
 // console.log('happy birthday');
-
-// USING ASYNC MODE
-getFiles('https://api.wheretheiss.at/v1/satellites/25544')
-async function getFiles(file) {
+const interval = 1000;
+setInterval(() => {
+    // USING ASYNC MODE
+    getFiles('https://api.wheretheiss.at/v1/satellites/25544')
+    async function getFiles(file) {
     let getObject = await fetch(file)
     // console.log(getObject);
-    if (getObject.status === 200) {
-        let myText = await getObject.json()
-        let getLat = myText.latitude
-        document.getElementById('demo').innerHTML = getLat;
-        document.getElementById('demo1').innerHTML = getLat;
-    }else{
-        console.error('Error');
-        document.getElementById('demo').innerHTML = '404 wrong url';
-        document.getElementById('demo1').innerHTML = '404 wrong url';
+        if (getObject.status === 200) {
+            let myText = await getObject.json()
+            let getLat = myText.latitude
+            // console.log(myText);
+            document.getElementById('demo').innerHTML = getLat;
+            document.getElementById('demo1').innerHTML = getLat;
+        }else{
+            console.error('Error');
+            document.getElementById('demo').innerHTML = '404 wrong url';
+            document.getElementById('demo1').innerHTML = '404 wrong url';
+        }
     }
+    // console.log("hello");
+}, interval);
 
-}
+
 getFile('text.txt')
 async function getFile(file) {
     let getObject = await fetch(file)
